@@ -11,8 +11,7 @@ const TeamAgents = (props) => {
 	const dispatch = useDispatch()
 	let publicUrl = process.env.PUBLIC_URL + '/'
 	let customClass = props.customClass ? props.customClass : ''
-	let arr = [1, 2, 3, 4, 5];
-
+	
 	useEffect(() => {
 		dispatch(getTeamsApi())
 	}, [dispatch])
