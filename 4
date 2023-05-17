@@ -1,0 +1,111 @@
+// import React from 'react'
+// import { useEffect } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { Link } from 'react-router-dom/cjs/react-router-dom.min'
+// import { getTeamsApi } from '../../actions/teamActions'
+// import { TEAM_API_URL } from '../../constants/config'
+
+// const TeamAgents = (props) => {
+// 	const { data } = useSelector((state) => state.team.team)
+// 	console.log(data)
+// 	const dispatch = useDispatch()
+// 	let publicUrl = process.env.PUBLIC_URL + '/'
+// 	let customClass = props.customClass ? props.customClass : ''
+// 	let arr = [1, 2, 3, 4, 5];
+
+// 	useEffect(() => {
+// 		dispatch(getTeamsApi())
+// 	}, [dispatch])
+
+// 	return (
+// 		<div>
+// 			<div>
+// 				<div className="ltn__product-slider-area ltn__product-gutter  plr--7">
+// 					<div className="container-fluid">
+// 						<div className="row">
+// 							<div className="col-lg-12">
+// 								<div className="section-title-area ltn__section-title-2--- text-center">
+// 									<h6 className="section-subtitle section-subtitle-2 ltn__secondary-color">Team</h6>
+// 									<h1 className="section-title">Our Agents</h1>
+// 								</div>
+// 							</div>
+// 						</div>
+// 						<div className="row ltn__product-slider-item-three-active-full-width slick-arrow-1 centerclass">
+// 							{
+// 								data && data.map((val, idx) => {
+// 									console.log(val);
+// 									return <div key={idx} className="col-xl-3 col-xxl-3 col-lg-3 col-sm-6">
+// 										<div className="ltn__team-item ltn__team-item-3---">
+// 											<div className="team-img img2 wcallFlex">
+// 												<img className="img2" src={`${TEAM_API_URL}/${val.path}`} alt="Image" />
+// 											</div>
+// 											<div className="team-info">
+// 												<h4>{val.name}</h4>
+// 												<h6 className=" designnation ltn__secondary-color">{val.designation}</h6>
+// 											</div>
+// 										</div>
+// 									</div>
+// 								})
+// 							}
+// 						</div>
+// 					</div>
+// 				</div>
+
+// 			</div>
+// 		</div>
+// 	)
+// }
+
+// export default TeamAgents
+
+import React, { useRef } from "react";
+import Slider from "react-slick";
+
+import '../../../public/assets/css/slick-prev.css';
+
+export default function TeamAgents() {
+	const sliderRef = useRef(null);
+
+	// const next = () => {
+	// 	sliderRef.current.slickNext(1);
+	// };
+
+	// const previous = () => {
+
+	// };
+
+	var settings = {
+		
+		infinite: true,
+		speed: 500,
+		slidesToShow: 3,
+		slidesToScroll: 1
+	};
+	return (
+		<div className="alignclass">
+			<Slider ref={sliderRef} {...settings}>
+				<div key={1}>
+					<img src="https://totallyhomerealestate.com/API/public/Teams/1682863952.jpg" />
+				</div>
+				<div key={2}>
+					<h3>2</h3>
+				</div>
+				<div key={3}>
+					<img src="https://totallyhomerealestate.com/API/public/Teams/1682863952.jpg" />
+				</div>
+				<div key={4}>
+					<h3>4</h3>
+				</div>
+				<div key={5}>
+					<img src="https://totallyhomerealestate.com/API/public/Teams/1682863952.jpg" />
+				</div>
+				<div key={6}>
+					<h3>6</h3>
+				</div>
+			</Slider>
+			<button className="button" type="button" onClick={(e) => { e.preventDefault(); sliderRef.current.slickNext(); }}>
+				next
+			</button>
+		</div>
+	);
+}
